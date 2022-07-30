@@ -1,5 +1,33 @@
 # Activity package technical test
 
+# Solution answers (questions for further development)
+
+1. What aspects of this package could be customised with a config file
+- Specify whether create, update and delete actions are activate or not.
+- We could look at making the reference to the name of the primary keys customisable in a config file.
+- Specify the performedActions descriptions.
+
+2. How would you go about storing more information about the event (i.e. what fields were updated, from what to what)?
+Here we could examine the model in the HasActions boot updated routine. We could look at the model's attributes vs the original values.
+
+3. How would you increase the security of the package, ensuring only authorised performers can see the activity for an item?
+In the PerformsActions trait we could include a new attribute for the performer indicating 'activity_access' and by default it is 0/false.
+
+4. If a performer or item is deleted from the system, what would their actions say in their summary? How could this be improved?
+The integrity would be broken. We could look at using soft deletes in the models to keep this integrity intact.
+
+5. Suppose the developer wants to record other types of actions that are more specific, i.e. "Task was completed by ____" how could that be implemented?
+More information can be stored in the Action table/model. Add some log info in a log text field for example and that is saved in the HasActions methods.
+
+6. What should be considered when developing the package to scale?
+For every database action there is a second query, this could be inefficient. Might be feasable to store the activity methods in a batch job
+and process thus write to db later perhaps.
+
+7. What should happen when an event is triggered but there is no authenticated user, e.g. in a queued job?
+Ideally there is a default value if an authenticated user is not found. Some investigation/testing for what would be the best solution here.
+I.e. default id or we can get information about the queued job perhaps.
+
+## Original instructions
 For this test you will be asked to build a simple Laravel package for logging
 user activity on models, so they can see a history of their data.
 
