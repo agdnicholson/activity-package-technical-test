@@ -8,5 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Action extends Model
 {
-    // TODO: Write logic for actions model
+    public $fillable = [
+        'type',
+        'performer',
+        'performer_id',
+        'subject',
+        'subject_id',
+    ];
+
+    /**
+     * Get the action description based on the type.
+     * 
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return 'The model was ' . $this->type . 'd';
+    }
 }

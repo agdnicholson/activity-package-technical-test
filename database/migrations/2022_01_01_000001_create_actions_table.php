@@ -14,9 +14,11 @@ return new class extends Migration {
     {
         Schema::create('actions', function(Blueprint $table) {
             $table->id();
-
-            // TODO: Create actions table
-
+            $table->enum('type', ['create', 'update', 'delete'])->index();
+            $table->string('performer')->index();
+            $table->unsignedBigInteger('performer_id')->index();
+            $table->string('subject')->index();
+            $table->unsignedBigInteger('subject_id')->index();
             $table->timestamps();
         });
     }
