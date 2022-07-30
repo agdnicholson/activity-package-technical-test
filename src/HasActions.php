@@ -11,9 +11,9 @@ trait HasActions
         static::creating(function ($model) {
             $action = new Action();
             $action->type = 'create';
-            $action->performer = 'user';
-            $action->performer_id = $model->user_id;
-            $action->subject = $model->table;
+            $action->performer = get_class(Auth()->user());
+            $action->performer_id = Auth()->user()->id;
+            $action->subject = get_class($model);
             $action->subject_id = $model->id;
             $action->save();
         });
@@ -21,9 +21,9 @@ trait HasActions
         static::updating(function ($model) {
             $action = new Action();
             $action->type = 'update';
-            $action->performer = 'Test 1';
-            $action->performer_id = $model->user_id;
-            $action->subject = $model->table;
+            $action->performer = get_class(Auth()->user());
+            $action->performer_id = Auth()->user()->id;
+            $action->subject = get_class($model);
             $action->subject_id = $model->id;
             $action->save();
         });
@@ -31,9 +31,9 @@ trait HasActions
         static::deleting(function ($model) {
             $action = new Action();
             $action->type = 'delete';
-            $action->performer = 'Test 1';
-            $action->performer_id = $model->user_id;
-            $action->subject = $model->table;
+            $action->performer = get_class(Auth()->user());
+            $action->performer_id = Auth()->user()->id;
+            $action->subject = get_class($model);
             $action->subject_id = $model->id;
             $action->save();
         });
