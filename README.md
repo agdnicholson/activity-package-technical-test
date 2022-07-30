@@ -24,7 +24,7 @@ For every database action there is a second query, this could be inefficient. Mi
 and process thus write to db later perhaps.
 
 7. What should happen when an event is triggered but there is no authenticated user, e.g. in a queued job?\
-Ideally there is a default value if an authenticated user is not found. Some investigation/testing for what would be the best solution here.
+Ideally there is a default value for the performer and performer_id attributes if an authenticated user is not found. Some investigation/testing for what would be the best solution here.
 I.e. default id or we can get information about the queued job perhaps.
 
 ## Original instructions
