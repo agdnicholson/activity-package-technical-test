@@ -2,7 +2,7 @@
 
 # Solution answers (questions for further development)
 
-1. What aspects of this package could be customised with a config file\
+1. What aspects of this package could be customised with a config file
 - Specify whether create, update and delete actions are activate or not.
 - We could look at making the reference to the name of the primary keys customisable in a config file.
 - Specify the performedActions descriptions.
