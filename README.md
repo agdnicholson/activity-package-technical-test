@@ -20,7 +20,7 @@ The integrity would be broken. We could look at using soft deletes in the models
 More information can be stored in the Action table/model. Add some log info in a log text field for example and that is saved in the HasActions methods.
 
 6. What should be considered when developing the package to scale?\
-For every database action there is a second query, this could be inefficient. Might be feasable to store the activity methods in a batch job
+For every database action there is a second query, this could be inefficient. Might be feasable to store the actions in a batch job
 and process thus write to db later perhaps.
 
 7. What should happen when an event is triggered but there is no authenticated user, e.g. in a queued job?\
